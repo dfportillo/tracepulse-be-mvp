@@ -1,1 +1,1 @@
-web: gunicorn control_process.wsgi
+web: gunicorn control_process.wsgi && gunicorn control_process.wsgi
