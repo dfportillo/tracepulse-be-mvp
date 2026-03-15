@@ -17,6 +17,6 @@ sqlparse==0.5.3
 uritemplate==4.2.0
 urllib3==2.5.0
 drf-spectacular==0.28.0
-gunicorn
+gunicorn==26.0.1
 whitenoise
-dj-database-url
+dj-database-url==3.1.2
