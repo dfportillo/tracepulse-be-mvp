@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 import os
-# import dj_database_url FIX
+import dj_database_url
 from pathlib import Path
 
 
@@ -88,16 +88,17 @@ SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-db_from_env = os.environ.get('DATABASE_URL') or os.getenv('DATABASE_URL')
+db_url = os.environ.get('DATABASE_URL') 
 
-if db_from_env:
-    import dj_database_url
+
+if db_url:
+    print(f"ÉXITO: Variable detectada")
     DATABASES = {
-        'default': dj_database_url.config(default=db_from_env, conn_max_age=600)
+        'default': dj_database_url.config(default=db_url, conn_max_age=600, ssl_require=True)
     }
 else:
-    # Si llegamos aquí, Railway REALMENTE no está pasando la variable
-    print("ERROR FATAL: El sistema operativo no detecta DATABASE_URL")
+    # Si falla, usamos el plan B pero imprimimos TODO para debuguear
+    print("DEBUG: Listado de variables disponibles:", os.environ.keys())
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
