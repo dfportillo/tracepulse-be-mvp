@@ -92,9 +92,14 @@ DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL'),
         conn_max_age=600,
-        ssl_require=True # Recomendado para conexiones seguras en la nube
+        ssl_require={'ca_certs': None} # Railway a veces pide esto para conectar
     )
 }
+
+# Si después de intentar leer la variable sigue vacío, forzamos un error 
+# para que el log nos diga qué está pasando realmente:
+if not os.environ.get('DATABASE_URL'):
+    print("CRÍTICO: Railway no está enviando la variable DATABASE_URL")
 
 AUTH_USER_MODEL = 'user.User'
 
