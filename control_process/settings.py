@@ -223,6 +223,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "https://*.railway.app",
+    "https://tracepulse-fe.vercel.app",
     FRONT_URL,
     # "http://127.0.0.1:5173",
 ]
