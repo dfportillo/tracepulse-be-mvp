@@ -1,1 +1,1 @@
-web: gunicorn control_process.wsgi && gunicorn control_process.wsgi
+web: python manage.py collectstatic --noinput && python manage.py migrate && gunicorn control_process.wsgi
