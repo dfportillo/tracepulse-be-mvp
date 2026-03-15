@@ -158,13 +158,31 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
+    "https://tracepulse-fe.vercel.app",
     FRONT_URL,
     "http://localhost:5173",  # Tu frontend (Vite/React/Vue, etc.)
     # "http://127.0.0.1:8000", # También se puede usar 127.0.0.1 por si acaso
     # "http://localhost:8000", # También se puede usar 127.0.0.1 por si acaso
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+ALLOWED_HOSTS = [
+    'web-production-22280.up.railway.app', # Tu URL de Railway
+    'localhost',
+    '127.0.0.1',
+    '.railway.app', # Comodín para cualquier subdominio de Railway
+]
 
 REST_FRAMEWORK = {
     # 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
